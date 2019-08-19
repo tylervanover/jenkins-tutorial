@@ -103,3 +103,5 @@ Let's go ahead and login with our <span title="it's definitely not **jenkins**">
 Since we're learning Jenkins and haven't created any projects so far, we should see a relatively blank dashboard: 
 
 <kbd><img src="img/jenkins-dashboard.png"></kbd>
+
+Great! We're all set and ready to start developing with Jenkins. Progress of this project will be maintained in the [Wiki](https://github.com/tylervanover/jenkins-tutorial/wiki) accompanying this repository. 
