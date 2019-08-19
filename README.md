@@ -36,7 +36,7 @@ To replicate, you should determine a folder on your host machine and designate i
 
 In my case, I ran the following: 
 
-`docker run -d -u 1000 -v "D:\var\jenkins_home\":/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:latest`
+`docker run -d -u 1000 -v "D:\var\jenkins_home":/var/jenkins_home -p 8080:8080 -p 50000:50000 -p 587:587 jenkins/jenkins:latest`
 
 > Note: Because I am using Docker for Windows, I need to wrap some of the paths as original Windows paths. Also, due to permissions issues I have to pass the user ID 1000 in the run command, as the default jenkins user is ID 1000. I decided to use a bind mount to choose an explicit path based on my local storage. Otherwise, I could have let Docker create a volume and manage it. 
 
