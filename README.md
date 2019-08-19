@@ -44,7 +44,7 @@ In my case, I ran the following:
 
 For the ease of referring to the container, I stopped and renamed it to `my_jenkins`: 
 
-`docker rename \{randomly_generated\} my_jenkins`
+`docker rename {randomly_generated} my_jenkins`
 
 Finally, to make sure that `my_jenkins` starts and stays running when my Docker Desktop loads, I modified the restart policy: 
 
@@ -92,7 +92,7 @@ The Docker container will expose Jenkins over port 8080 on your localhost based 
 
 I've already made it through these steps, using the very creative **jenkins** username.
 
-Now, if I navigate to [localhost:8080](localhost:8080) from my web browser, I see the login page:
+Now, if I navigate to [http://localhost:8080/](127.0.0.1:8080) from my web browser, I see the login page:
 
 <kbd><img src="img/jenkins-login-form.png" width=75%></kbd>
 
