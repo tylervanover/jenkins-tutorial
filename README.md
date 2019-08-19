@@ -94,14 +94,14 @@ I've already made it through these steps, using the very creative **jenkins** us
 
 Now, if I navigate to [http://localhost:8080/](127.0.0.1:8080) from my web browser, I see the login page:
 
-<kbd><img src="img/jenkins-login-form.png" width=75%></kbd>
+<img src="img/jenkins-login-form.png" width=75%>
 
 Let's go ahead and login with our <span title="it's definitely not **jenkins**">**super secret password**</span>.
 
-<kbd><img src="img/jenkins-login.png" width=25%></kbd>
+<img src="img/jenkins-login.png" width=25%>
 
 Since we're learning Jenkins and haven't created any projects so far, we should see a relatively blank dashboard: 
 
-<kbd><img src="img/jenkins-dashboard.png"></kbd>
+<img src="img/jenkins-dashboard.png">
 
 Great! We're all set and ready to start developing with Jenkins. Progress of this project will be maintained in the [Wiki](https://github.com/tylervanover/jenkins-tutorial/wiki) accompanying this repository. 
