@@ -86,9 +86,17 @@ And has the appropriate parameters for bind mount and restart policy:
 },
 ```
 
+### Accessing the Container
+
+If we ever need to hop into the container's linux environment, we can do so with bash: 
+
+`$ winpty docker exec -it my_jenkins bin/bash`
+
+> Note: `winpty` is a necessary wrapper because I am using GitBash for Windows
+
 # Logging In
 
-The Docker container will expose Jenkins over port 8080 on your localhost based on the default configurations. For the purposes of learning Jenkins, I'm left this as default. The first time you access localhost 8080 you'll be prompted to login with the admin password and then configure plugins/add another admin user. 
+The Docker container will expose Jenkins over port 8080 on your localhost based on the default configurations. For the purposes of learning Jenkins, I'm left this as default. The first time you access localhost 8080 you'll be prompted to login with the admin password and then configure plugins/add another admin user. We've also exposed 587 for SMTP. 
 
 I've already made it through these steps, using the very creative **jenkins** username.
 
