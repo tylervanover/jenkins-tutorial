@@ -36,7 +36,7 @@ To replicate, you should determine a folder on your host machine and designate i
 
 In my case, I ran the following: 
 
-`docker run -d -u 1000 -v "D:\var\jenkins_home":/var/jenkins_home -p 8080:8080 -p 50000:50000 -p 587:587 jenkins/jenkins:latest`
+`docker run -d -u 1000 -v "D:\var\jenkins_home":/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:latest`
 
 > Note: Because I am using Docker for Windows, I need to wrap some of the paths as original Windows paths. Also, due to permissions issues I have to pass the user ID 1000 in the run command, as the default jenkins user is ID 1000. I decided to use a bind mount to choose an explicit path based on my local storage. Otherwise, I could have let Docker create a volume and manage it. 
 
@@ -96,7 +96,7 @@ If we ever need to hop into the container's linux environment, we can do so with
 
 # Logging In
 
-The Docker container will expose Jenkins over port 8080 on your localhost based on the default configurations. For the purposes of learning Jenkins, I'm left this as default. The first time you access localhost 8080 you'll be prompted to login with the admin password and then configure plugins/add another admin user. We've also exposed 587 for SMTP. 
+The Docker container will expose Jenkins over port 8080 on your localhost based on the default configurations. For the purposes of learning Jenkins, I'm left this as default. The first time you access localhost 8080 you'll be prompted to login with the admin password and then configure plugins/add another admin user.
 
 I've already made it through these steps, using the very creative **jenkins** username.
 
