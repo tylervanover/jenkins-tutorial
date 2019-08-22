@@ -8,7 +8,14 @@
     - [Jenkins Bind Mount](#jenkins-bind-mount)
     - [Final Tweaks](#final-tweaks)
     - [Review](#review)
+    - [Accessing the Container](#accessing-the-container)
 - [Logging In](#logging-in)
+- [Architecture](#architecture)
+  - [Tools Used](#tools-used)
+    - [Jenkins](#jenkins)
+    - [Maven](#maven)
+    - [Git and GitHub](#git-and-github)
+    - [ngrok](#ngrok)
 
 # Introduction
 
@@ -113,3 +120,69 @@ Since we're learning Jenkins and haven't created any projects so far, we should 
 <img src="img/jenkins-dashboard.png">
 
 Great! We're all set and ready to start developing with Jenkins. Progress of this project will be maintained in the [Wiki](https://github.com/tylervanover/jenkins-tutorial/wiki) accompanying this repository. 
+
+# Architecture
+
+As the project space grows, I'll document the tools and workflows that I'm currently integrating into CI/CD loop. This diagram will be updated regularly to reflect changes. 
+
+The current project architecture is as follows: 
+
+<img src="chart/tech-stack.png" height=75% width=75%>
+
+## Tools Used
+
+### Jenkins
+Jenkins is the current automation server for our CI/CD loop.
+
+#### Platform
+
+I'm currently running Jenkins on Docker Desktop for Windows via the `jenkins/jenkins:lts` image from Docker Hub. It runs locally and exposes an endpoint on port 8080
+
+#### Responsibilities
+
+* Receives automation events (webhooks) from SCM (GitHub)
+* Executes build phases from Maven projects based on project **pom.xml**
+* Tracks the artifacts generated from Maven projects based on project **pom.xml**
+
+### Maven
+
+Maven is the primary build automation tool for our projects. We'll create Java Maven projects and configure different phases of the build to take place. 
+
+#### Platform
+
+Maven is installed directly in our Jenkins Docker container, and configured from the Jenkins dashboard. 
+
+#### Responsibilities
+
+* Receives commands from Jenkins that correspond to project life cycle events
+  * `mvn clean package` is the preferred life cycle for our simple Java projects
+* Executes the build phases and goals from the project **pom.xml** based on the inputs received from Jenkins
+* Generates the artifacts and build states of the project
+
+### Git and GitHub
+
+Git using GitHub is our Source Code Management (SCM) system. 
+
+#### Platform
+
+Standard GitHub repositories. 
+
+#### Responsibilities
+
+* Maintains the code base for projects
+* Fires automation events for items like a change in the source (PUSH)
+* Delivers webhook payloads to Jenkins box so build can take place
+
+### ngrok
+
+Because we run Jenkins locally, `ngrok` is our Reverse Proxy marshalling agent. 
+
+#### Platform
+
+Free-tier service that monitors and connects two endpoints. 
+
+#### Responsibilities
+
+* Opens a tunnel between local endpoint (Jenkins on localhost:8080) and the greater internet
+* Monitors events such as POST, GET, and more
+
